@@ -2,8 +2,10 @@
 #include <iostream>
 #include "../general.h"
 
+using namespace std;
+
 // merge funtion
-void merge(void* data[], int start, int mid, int end, std::string data_type) {
+void merge(void* data[], int start, int mid, int end, string data_type) {
     int left_size = mid - start + 1;
     int right_size = end - mid;
     
@@ -47,7 +49,7 @@ void merge(void* data[], int start, int mid, int end, std::string data_type) {
 }
 
 // merge_sort
-void merge_sort(void* data[], int start, int end, std::string data_type) {
+void merge_sort(void* data[], int start, int end, string data_type) {
     if(start < end) {
         int mid = start + (end - start) / 2;  
         merge_sort(data, start, mid, data_type);

@@ -2,8 +2,10 @@
 #include <iostream>
 #include "../general.h"
 
+using namespace std;
+
 // 파티션 함수 (PARTITION(A, p, r))
-int partition(void* data[], int p, int r, std::string data_type) {
+int partition(void* data[], int p, int r, string data_type) {
     void* x = data[r];
     int i = p - 1;
     for (int j = p; j <= r - 1; j++) {
@@ -22,7 +24,8 @@ int partition(void* data[], int p, int r, std::string data_type) {
     return i + 1;
 }
 
-void quick_sort(void* data[], int p, int r, std::string data_type) {
+// 퀵소트 함수
+void quick_sort(void* data[], int p, int r, string data_type) {
     if (p < r) {
         int q = partition(data, p, r, data_type);        
         quick_sort(data, p, q - 1, data_type);
