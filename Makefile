@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -O2
 
 # 디렉토리 설정
 CONV_DIR = convention_sort
-CONT_DIR = contemporary-sort
+CONT_DIR = contemporary_sort
 
 MAIN_SRCS = main.cpp evaluate.cpp general.cpp
 CONV_SRCS = $(wildcard $(CONV_DIR)/*.cpp)

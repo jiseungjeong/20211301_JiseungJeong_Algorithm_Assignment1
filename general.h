@@ -3,9 +3,11 @@
 
 #include <string>
 
+using namespace std;
+
 struct Tuple {
     int num;
-    std::string str;
+    string str;
 };
 
 template <typename T>
@@ -15,14 +17,14 @@ void swap_elements(T& a, T& b) {
     b = temp;
 }
 
-bool compare_elements(void* a, void* b, std::string data_type);
+bool compare_elements(void* a, void* b, string data_type);
 
 struct MaxValues {
     static const int INTEGER_MAX;
     static const float FLOAT_MAX;
-    static const std::string STRING_MAX;
+    static const string STRING_MAX;
     static const int TUPLE_NUM_MAX;
-    static const std::string TUPLE_STR_MAX;
+    static const string TUPLE_STR_MAX;
 };
 
 #endif 

@@ -18,6 +18,9 @@ extern void insertion_sort(void** data, int size, string data_type);
 
 extern void heap_sort(void** data, int start, int end, string data_type);
 
+extern void cocktail_sort(void** data, int start, int end, string data_type);
+
+extern void intro_sort(void** data, int start, int end, string data_type);
 
 extern void run_eval(SortFunction sort_func, const string& sort_func_name, const string& specific_file = "", int iter_num = 10);
 
@@ -42,7 +45,9 @@ int main(int argc, char* argv[]) {
         {"insertion_sort", [](void** data, int start, int end, string data_type) {
             insertion_sort(data, end - start + 1, data_type);
         }},
-        {"heap_sort", heap_sort}
+        {"heap_sort", heap_sort},
+        {"cocktail_sort", cocktail_sort},
+        {"intro_sort", intro_sort}
         // 추후 다른 정렬 알고리즘 추가할것!!!
     };
     

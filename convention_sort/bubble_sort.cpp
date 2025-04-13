@@ -8,7 +8,7 @@ using namespace std;
 // 매 바퀴마다 i와 i+1를 비교, 앞의 원소가 더 크면 두 원소를 swap
 // 다음 바퀴부터는 맨 뒤 원소를 제외하고 반복,
 // 위 과정을 j를 반복 변수로 하는 반복문으로 감싸 총 n-1번 반복해 완전 정렬을 만드는 정렬 방식.
-bool optimize = true;
+static bool optimize = true;
 
 void bubble_sort(void** data, int size, string data_type) {
     for (int j = 0; j < size - 1; j++) {
