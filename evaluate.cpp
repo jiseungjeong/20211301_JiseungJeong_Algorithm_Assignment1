@@ -133,7 +133,6 @@ void memory_tracking_sort_wrapper(
     tracker.stop();
 }
 
-// 정렬 함수 평가
 map<string, double> evaluate_sorting_function(
     void (*sort_func)(void**, int, int, string), 
     const vector<void*>& data, 
@@ -144,7 +143,6 @@ map<string, double> evaluate_sorting_function(
     vector<double> memory_usages;
     
     for (int i = 0; i < iter_num; ++i) {
-        // 데이터 복사
         vector<void*> test_data;
         for (auto ptr : data) {
             if (data_type == "INT") {
@@ -213,10 +211,12 @@ void run_eval(void (*sort_func)(void**, int, int, string), const string& sort_fu
         {"int_ascending_sorted_", "int", "INT"},
         {"int_descending_sorted_", "int", "INT"},
         {"int_random_", "int", "INT"},
+        /*
         {"float_ascending_sorted_", "float", "FLOAT"},
         {"float_descending_sorted_", "float", "FLOAT"},
         {"float_random_", "float", "FLOAT"},
         {"string_random_", "string", "STRING"},
+        */
         {"tuple_num_descending_char_ascending_data_", "tuple", "TUPLE"},
         {"10per_", "int", "INT"},
         {"50per_", "int", "INT"},

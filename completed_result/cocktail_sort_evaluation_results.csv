@@ -1,0 +1,34 @@
+file_name,data_size,avg_time,avg_memory
+int_ascending_sorted_30K.txt,30000,0.00515389,16
+int_ascending_sorted_1M.txt,1e+06,0.21099,14689.6
+int_ascending_sorted_10K.txt,10000,0.00180978,16
+int_ascending_sorted_1K.txt,1000,0.000157312,16
+int_ascending_sorted_100K.txt,100000,0.001347,32
+int_ascending_sorted_300K.txt,300000,0.001354,32
+int_ascending_sorted_3K.txt,3000,0.001315,30.4
+int_descending_sorted_30K.txt,30000,2.431703,168
+int_descending_sorted_10K.txt,10000,0.385197,32
+int_descending_sorted_3K.txt,3000,0.023999,32
+int_descending_sorted_1K.txt,1000,0.012559,19.2
+int_descending_sorted_100K.txt,100000,26.988249,507.2
+int_descending_sorted_300K.txt,300000,252.240750,16
+int_descending_sorted_1M.txt -> 오버헤드 (10분이상)
+int_random_1K.txt,1000,0.002949,17.6
+int_random_3K.txt,3000,0.019311,16
+int_random_10K.txt,10000,0.252760,16
+int_random_30K.txt,30000,2.409850,16
+int_random_100K.txt,100000,28.015014,224
+int_random_300K.txt,300000,289.79,16
+int_random_1M.txt,1000000,오버헤드
+10per_10K.txt,10000,0.211111,16
+10per_100K.txt,100000,23.955738,16
+10per_1M.txt,1000000, 오버헤드
+50per_10K.txt,10000,0.120595,16
+50per_100K.txt,100000,11.246552,16
+50per_1M.txt,1000000, 오버헤드
+90per_10K.txt,10000,0.017702,16
+90per_100K.txt,100000,1.674640,16
+90per_1M.txt,1000000,181.276107,16
+
+
+

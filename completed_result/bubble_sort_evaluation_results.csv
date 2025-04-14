@@ -1,0 +1,31 @@
+file_name,data_size,avg_time,avg_memory
+int_ascending_sorted_30K.txt,30000,0.001324,16
+int_ascending_sorted_1M.txt,1000000,0.004013,16
+int_ascending_sorted_10K.txt,10000,0.001310,16
+int_ascending_sorted_1K.txt,1000,0.000030,0
+int_ascending_sorted_100K.txt,100000,0.001318,16
+int_ascending_sorted_300K.txt,300000,0.001339,16
+int_ascending_sorted_3K.txt,3000,0.000528,6.4
+int_descending_sorted_30K.txt,30000,1.651127,139.2
+int_descending_sorted_10K.txt,10000,0.227680,16
+int_descending_sorted_3K.txt,3000,0.017605,16
+int_descending_sorted_1K.txt,1000,0.002554,16
+int_descending_sorted_100K.txt,100000,18.951026,518.4
+int_descending_sorted_300K.txt,300000,179.063567,16
+int_descending_sorted_1M.txt,1000000,오버헤드
+int_random_1K.txt,1000,0.003467,16
+int_random_3K.txt,3000,0.023523,16
+int_random_10K.txt,10000,0.318441,16
+int_random_30K.txt,30000,3.420089,16
+int_random_100K.txt,100000,39.306256,16
+int_random_300K.txt,300000,378.421425,16
+int_random_1M.txt,1000000, 오버헤드
+10per_10K.txt,10000,0.287871,16
+10per_100K.txt,100000,33.850758,197.333333
+10per_1M.txt,1000000, 오버헤드
+50per_10K.txt,10000,0.150275,16
+50per_100K.txt,100000,17.203751,16
+50per_1M.txt,1000000, 오버헤드
+90per_10K.txt,10000,0.098242,16
+90per_100K.txt,100000,3.272992,236.8
+90per_1M.txt,1000000,357.189197,16

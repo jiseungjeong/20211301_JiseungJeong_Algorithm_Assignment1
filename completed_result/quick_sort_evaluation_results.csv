@@ -20,11 +20,6 @@ int_random_300K.txt,300000,0.0544484,16
 int_random_1K.txt,1000,0.00130291,16
 int_random_100K.txt,100000,0.015765,16
 int_random_1M.txt,1e+06,0.228141,16
-float_ascending_sorted_100K.txt,1e+06,0.0870279,16
-float_descending_sorted_100K.txt,1e+06,0.0964133,16
-float_random_100K.txt,1e+06,0.241028,1636.8
-string_random_100K.txt,1e+06,0.437838,523.2
-tuple_num_descending_char_ascending_data_1K.txt,1000,0.00128893,16
 10per_1M.txt,1e+06,0.178291,16
 10per_100K.txt,100000,0.0145166,16
 10per_10K.txt,10000,0.00131001,16
@@ -34,3 +29,9 @@ tuple_num_descending_char_ascending_data_1K.txt,1000,0.00128893,16
 90per_10K.txt,10000,0.00130923,16
 90per_1M.txt,1e+06,0.0794984,16
 90per_100K.txt,100000,0.00764318,16
+
+float_ascending_sorted_100K.txt,1e+06,0.0870279,16
+float_descending_sorted_100K.txt,1e+06,0.0964133,16
+float_random_100K.txt,1e+06,0.241028,1636.8
+string_random_100K.txt,1e+06,0.437838,523.2
+tuple_num_descending_char_ascending_data_1K.txt,1000,0.00128893,16
