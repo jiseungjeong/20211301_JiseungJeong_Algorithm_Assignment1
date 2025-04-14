@@ -8,7 +8,7 @@ extern void heap_sort(void** data, int start, int end, string data_type);
 extern int partition(void* data[], int p, int r, string data_type);
 extern void insertion_sort(void** data, int size, string data_type);
 
-int cal_log2(int n) {
+static int cal_log2(int n) {
     int log = 0;
     while (n > 1) {
         n = int(n / 2); 

@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <map>
 #include <numeric>
+#include <thread>
 #include "general.h"
 
 #ifdef __APPLE__
@@ -52,9 +53,10 @@ vector<void*> parse_data(const string& file_name, const string& type) {
     return data;
 }
 
-// 메모리 사용량 측정 함수
+// 메모리 사용량 측정 함수 개선
 // 참조 링크: https://developer.apple.com/forums/thread/105088
 size_t get_current_memory_usage() {
+#ifdef __APPLE__
     task_vm_info_data_t vmInfo;
     mach_msg_type_number_t count = TASK_VM_INFO_COUNT;
     kern_return_t kerr = task_info(mach_task_self(), TASK_VM_INFO, (task_info_t)&vmInfo, &count);
@@ -62,8 +64,73 @@ size_t get_current_memory_usage() {
     if (kerr == KERN_SUCCESS) {
         return vmInfo.phys_footprint;
     }
-
+#endif
     return 0;
+}
+
+// 동적으로 메모리 사용량을 추적하는 클래스
+class MemoryTracker {
+private:
+    size_t baseline;
+    size_t peak_usage;
+    bool tracking;
+    
+public:
+    MemoryTracker() : baseline(0), peak_usage(0), tracking(false) {}
+    
+    void start() {
+        baseline = get_current_memory_usage();
+        peak_usage = 0;
+        tracking = true;
+    }
+    
+    void update() {
+        if (!tracking) return;
+        
+        size_t current = get_current_memory_usage();
+        if (current > baseline) {
+            size_t current_usage = current - baseline;
+            if (current_usage > peak_usage) {
+                peak_usage = current_usage;
+            }
+        }
+    }
+    
+    void stop() {
+        tracking = false;
+    }
+    
+    size_t getPeakUsage() const {
+        return peak_usage;
+    }
+};
+
+void memory_tracking_sort_wrapper(
+    void (*sort_func)(void**, int, int, string),
+    void** data, 
+    int left, 
+    int right, 
+    string type,
+    MemoryTracker& tracker
+) {
+    tracker.start();
+    
+    bool should_monitor = true;
+    thread monitor_thread([&]() {
+        while (should_monitor) {
+            tracker.update();
+            this_thread::sleep_for(chrono::milliseconds(1)); // 1ms 간격으로 모니터링
+        }
+    });
+    
+    sort_func(data, left, right, type);
+    
+    should_monitor = false;
+    if (monitor_thread.joinable()) {
+        monitor_thread.join();
+    }
+    
+    tracker.stop();
 }
 
 // 정렬 함수 평가
@@ -95,22 +162,17 @@ map<string, double> evaluate_sorting_function(
             }
         }
         
-        size_t start_memory = get_current_memory_usage();
+        MemoryTracker memTracker;
+        
         auto start_time = chrono::high_resolution_clock::now();
         
-        sort_func(test_data.data(), 0, test_data.size() - 1, data_type);
+        memory_tracking_sort_wrapper(sort_func, test_data.data(), 0, test_data.size() - 1, data_type, memTracker);
         
         auto end_time = chrono::high_resolution_clock::now();
-        size_t end_memory = get_current_memory_usage();
         
         execution_times.push_back(chrono::duration<double>(end_time - start_time).count());
+        memory_usages.push_back(static_cast<double>(memTracker.getPeakUsage()));
         
-        // 메모리 사용량 계산
-        double memory_used = 0.0;
-        memory_used = static_cast<double>(end_memory - start_memory);
-        memory_usages.push_back(memory_used);
-        
-        // 메모리 해제
         for (void* ptr : test_data) {
             if (data_type == "INT") delete static_cast<int*>(ptr);
             else if (data_type == "FLOAT") delete static_cast<float*>(ptr);
@@ -119,7 +181,6 @@ map<string, double> evaluate_sorting_function(
         }
     }
 
-    // 평균 계산
     double avg_time = 0.0;
     double avg_memory = 0.0;
     

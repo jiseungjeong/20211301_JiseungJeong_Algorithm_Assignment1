@@ -24,6 +24,12 @@ extern void intro_sort(void** data, int start, int end, string data_type);
 
 extern void comb_sort(void** data, int start, int end, string data_type);
 
+extern void tournament_sort(void** data, int start, int end, string data_type);
+
+extern void tim_sort(void** data, int start, int end, string data_type);
+
+extern void library_sort(void** data, int start, int end, string data_type);
+
 extern void run_eval(SortFunction sort_func, const string& sort_func_name, const string& specific_file = "", int iter_num = 10);
 
 int main(int argc, char* argv[]) {
@@ -50,8 +56,10 @@ int main(int argc, char* argv[]) {
         {"heap_sort", heap_sort},
         {"cocktail_sort", cocktail_sort},
         {"intro_sort", intro_sort},
-        {"comb_sort", comb_sort}
-        // 추후 다른 정렬 알고리즘 추가할것!!!
+        {"comb_sort", comb_sort},
+        {"tournament_sort", tournament_sort},
+        {"tim_sort", tim_sort},
+        {"library_sort", library_sort}
     };
     
     auto it = sorting_functions.find(sort_func_name);
