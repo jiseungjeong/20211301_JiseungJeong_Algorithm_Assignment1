@@ -20,7 +20,6 @@ int_random_sorted_30K.txt,30000,2.628484,16
 int_random_sorted_100K.txt,100000,30.311864,69.333333
 int_random_sorted_300K.txt,300000,271.426926,16
 int_random_sorted_1M.txt,1000000,오버헤드
-
 10per_10K.txt,10000,0.285658,16
 10per_100K.txt,100000,30.263270,384
 10per_1M.txt,1000000,오버헤드
